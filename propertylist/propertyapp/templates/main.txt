@@ -1,0 +1,101 @@
+<html>
+<head>
+   <script src= "http://code.jquery.com/jquery-2.1.1.js"> </script>
+   <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<style type = "text/css">
+	      .centerdiv
+	      {
+		width: 45%;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 50px;
+		text-align: center;
+	       }
+	       .login{
+		width: 45%;
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
+		}
+		.property		
+		{
+		width: 45%;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 0px;
+		text-align: center;
+		}
+		</style>
+		<nav class = "navbar navbar-default navbar-fixed-top" role ="navigation">
+		  <ul class = "nav navbar-nav">
+		    {% if user != None %}
+		    <a class ="navbar-brand" href="#">{{user.username}}</a>
+		    <li><a href="#" data-toggle="modal" data-target="#addproperty">Add Property</a></li>	
+		     {% endif %} 
+		     <li><a href ="#" data-toggle="modal" data-target="#login">Login</a></li>
+		</nav>
+				
+		<div class = "page-header centerdiv">
+		   <h1>Property List</h1>
+		</div>
+		
+		<div class = "property well">
+		    {% for property in property %}
+			<div>
+			 <div class = "page-header">
+			    <h3>{{property.name}}</h3>
+			    <small>{{property.author}}</small>
+			 </div>
+			   {{property.description}}
+			</div>
+			{% endfor %}
+		
+        </div>
+		<div class = "modal fade" id = "login">
+		   <div class = "modal-dialog">
+		      <div class = "modal-content">
+			    <form method = "post">
+				    {% csrf_token %%}
+					<div class ="mod-body-login">
+					   <b>Username</b>
+					      <input class = "form-control" name="username"/>
+						  <b>Password:</b>
+						  <input type = "password" class = "form-control" name = "password" >
+					</div>
+					<div class = "modal-footer">
+					    <input type = "submit" class "btn btn-success pull-left" value = "Login"/>
+					</form>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					
+					
+				</div>
+				</div>
+			</div>
+		</div>
+		
+			<div class = "modal fade" id = "addproperty">
+		   <div class = "modal-dialog">
+		      <div class = "modal-content">
+			    <form action = "/addproperty/" method = "post">
+				    {% csrf_token %%}
+					<div class ="mod-body-login">
+					   <b>Name</b>
+					      <input class = "form-control" name="Name"/>
+						  <b>Property Description</b>
+						  <input class = "form-control" name = "propertydescription" >
+					</div>
+					<div class = "modal-footer">
+					    <input type = "submit" class "btn btn-success pull-left" value = "Add Property"/>
+					</form>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					
+					
+				</div>
+				</div>
+			</div>
+        </div>
+</body>
+</html>

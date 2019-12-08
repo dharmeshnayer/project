@@ -1,0 +1,47 @@
+<html>
+<head>
+   <script src= "http://code.jquery.com/jquery-2.1.1.js"> </script>
+   <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<style type = "text/css">
+	      .centerdiv
+	      {
+		width: 45%;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 50px;
+		text-align: center;
+	       }
+	       .login{
+		width: 45%;
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
+		}
+		.property		
+		{
+		width: 45%;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 0px;
+		text-align: center;
+		}</style>
+		
+		<nav class = "navbar navbar-default navbar-fixed-top" role ="navigation">
+		  <ul class = "nav navbar-nav"></nav>
+		  <br><br><br>
+		  {% block content %}
+		<h2>Sign Up</h2>
+		<form method="post">
+		{% csrf_token %}
+		{{ form.as_p }}
+		
+		<button type="submit">Sign up</button>
+		</form>
+		{% endblock %}
+			
+			
+</body>
+</html>
