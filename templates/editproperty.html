@@ -1,0 +1,68 @@
+<html>
+<head>
+   <script src= "http://code.jquery.com/jquery-2.1.1.js"> </script>
+   <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<style type = "text/css">
+	      .centerdiv
+	      {
+		width: 45%;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 50px;
+		text-align: center;
+	       }
+	       .login{
+		width: 45%;
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
+		}
+		.property		
+		{
+		width: 45%;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 0px;
+		text-align: center;
+		}
+		</style>
+		<nav class = "navbar navbar-default navbar-fixed-top" role ="navigation">
+		  <ul class = "nav navbar-nav">
+		    {% if user != None %}
+		    <a class ="navbar-brand" href="#">{{user.username}}</a>
+		    <li><a href="#" data-toggle="modal" data-target="#addproperty">Add Property</a></li>	
+			<li><a href="/">Logout</a></li>
+		     {% endif %} 
+		     
+		</nav>
+				
+<br><br><br>
+			
+		      <div class = "modal-content">
+			    <form action = "#/?propid={{propid}}" method = "post">
+				    {% csrf_token %}
+					<div class ="mod-body-login">
+					   <b>Name</b>
+					      <input class = "form-control" name="name"/>
+						  <b>Property Description</b>
+						  <input class = "form-control" name = "description" >
+							<b>Price</b>
+							<input class = "form control" name="price">
+					</div>
+					<div class = "modal-footer">
+					    <input type = "submit" class "btn btn-success pull-left" value = "Edit Property"/>
+					</form>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					
+					
+				</div>
+				</div>
+			</div>
+        </div>
+			
+			
+</body>
+</html>
